@@ -32,6 +32,6 @@ jobs:
     - name: Archive artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: jdelay
+        name: jdelay-dist
         path: |
           target/*.jar
