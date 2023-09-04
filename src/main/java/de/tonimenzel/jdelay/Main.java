@@ -1,11 +1,13 @@
 package de.tonimenzel.jdelay;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String realmain = System.getProperty("jdelay.realmain");
-        String delay = System.getProperty("jdelay.delay");
+        String delay = System.getProperty("jdelay.wait");
         if (realmain == null || delay == null) {
-            System.err.println("jdelay: missing system properties");
+            System.err.println("jdelay: missing system properties e.g.: -Djdelay.realmain=yourclass -Djdelay.wait=2000");
             System.exit(1);
         }
         try {
@@ -13,15 +15,8 @@ public class Main {
             Thread.sleep(Long.parseLong(delay));
         } catch (InterruptedException e) {
             System.err.println("jdelay: sleep interrupted");
-            System.exit(1);
         }
-        try {
-            Class<?> clazz = Class.forName(realmain);
-            clazz.getMethod("main", String[].class).invoke(null, (Object) args);
-        } catch (Exception e) {
-            System.err.println("jdelay: failed to invoke real main");
-            e.printStackTrace();
-            System.exit(1);
-        }
+        Class<?> clazz = Class.forName(realmain);
+        clazz.getMethod("main", String[].class).invoke(null, (Object) args);
     }
 }
