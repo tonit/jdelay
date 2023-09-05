@@ -5,7 +5,7 @@
          
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>de.tonimenzel</groupId>
+    <groupId>com.github.tonit</groupId>
     <artifactId>jdelay</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -17,7 +17,7 @@
       <url>https://maven.pkg.github.com/tonit/jdelay</url>
     </repository>
   </distributionManagement>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -28,7 +28,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>de.tonimenzel.jdelay.Main</mainClass>
+                            <mainClass>com.github.tonit.jdelay.JDelay</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

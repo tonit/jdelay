@@ -1,8 +1,13 @@
-package de.tonimenzel.jdelay;
+/**
+ * jdelay - a simple java program to delay the start of another java program
+ *
+ * Author: Toni Menzel (toni.menzel@rebaze.com)
+ */
+package com.github.tonit.jdelay;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class Main {
+public class JDelay {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String realmain = System.getProperty("jdelay.realmain");
         String delay = System.getProperty("jdelay.wait");
