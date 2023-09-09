@@ -8,7 +8,7 @@ package com.github.tonit.jdelay;
 import java.lang.reflect.InvocationTargetException;
 
 public class JDelay {
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public static void main(String[] args) throws Exception {
         String realmain = System.getProperty("jdelay.realmain");
         String delay = System.getProperty("jdelay.wait");
         if (realmain == null || delay == null) {
