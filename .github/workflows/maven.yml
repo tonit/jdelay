@@ -27,9 +27,7 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
-    - name: Set New Version
-      run: mvn versions:set -DnewVersion=1.0.${{ github.run_number }}
-    - name: Build with Maven
+    - name: Build Snapshot
       run: mvn -B package --file pom.xml
     - name: Archive artifacts
       uses: actions/upload-artifact@v3
@@ -37,6 +35,7 @@ jobs:
         name: jdelay-dist
         path: |
           target/*.jar
+
   publish:
     runs-on: ubuntu-latest
     needs: build
@@ -49,6 +48,8 @@ jobs:
         with:
           java-version: '8'
           distribution: 'temurin'
+      - name: Set New Version
+        run: mvn versions:set -DnewVersion=1.0.${{ github.run_number }}
       - name: Publish package
         run: mvn --batch-mode deploy -DuniqueVersion=false
         env:
