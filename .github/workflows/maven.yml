@@ -39,6 +39,7 @@ jobs:
           target/*.jar
   publish:
     runs-on: ubuntu-latest
+    needs: build
     permissions:
       contents: read
       packages: write
