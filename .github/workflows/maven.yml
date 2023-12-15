@@ -13,7 +13,22 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        required: true
+        default: 'test'
+        type: choice
+        options:
+        - test
+        - staging
+        - prod
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+        
 jobs:
   build:
 
